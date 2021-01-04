@@ -1,0 +1,215 @@
+webpackHotUpdate("main",{
+
+/***/ "./src/App.js":
+/*!********************!*\
+  !*** ./src/App.js ***!
+  \********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(__react_refresh_utils__, __react_refresh_error_overlay__) {/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.css */ "./src/App.css");
+/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_App_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core */ "../../../../../node_modules/@material-ui/core/esm/index.js");
+/* harmony import */ var _Todo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Todo */ "./src/Todo.js");
+/* harmony import */ var _firebase__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./firebase */ "./src/firebase.js");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.esm.js");
+/* harmony import */ var tachyons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tachyons */ "./node_modules/tachyons/css/tachyons.css");
+/* harmony import */ var tachyons__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(tachyons__WEBPACK_IMPORTED_MODULE_7__);
+__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! react-refresh/runtime */ "./node_modules/react-refresh/runtime.js");
+__webpack_require__.$Refresh$.setup(module.i);
+
+
+
+var _jsxFileName = "C:\\Users\\ujjwal\\Desktop\\programming\\react\\learned-from-clever-programmer\\myTodoApp\\src\\App.js",
+    _s = __webpack_require__.$Refresh$.signature();
+
+
+
+
+
+
+
+
+
+function App() {
+  _s();
+
+  const [todos, setTodos] = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])([]);
+  const [input, setInput] = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(''); //when app is loaded we need to listen to the database and fetch
+  // the datas
+  //displaying database
+
+  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(() => {
+    _firebase__WEBPACK_IMPORTED_MODULE_5__["default"].collection('todos').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+      setTodos(snapshot.docs.map(doc => ({
+        id: doc.id,
+        todo: doc.data().todo
+      }))); //anything inside () is object and {} is javascript
+      // here {id: .... .todo} is an object with two field
+      // id and todo; here we take id because id is what we use to identify each
+      // field-it can be used to delete or search it
+    });
+  }, []); //everytime there is a change in the things mentioned here it looks
+  //for new data in database
+
+  const addTodoFunction = event => {
+    event.preventDefault(); //will prevent refresh
+    //adding to database
+
+    _firebase__WEBPACK_IMPORTED_MODULE_5__["default"].collection('todos').add({
+      todo: input,
+      timestamp: firebase__WEBPACK_IMPORTED_MODULE_6__["default"].firestore.FieldValue.serverTimestamp()
+    }); // here {todo:input} is an object where todo is a field and input is
+    // its value; this funciton adds it to our database
+    // ....whenever we input something it fires onSnapshot in
+    // useEffect function and then it diplays new updated code
+
+    setTodos([...todos, input]); ///appending
+
+    setInput(['']); //clearing the line
+  };
+
+  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("div", {
+    className: "App",
+    children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("h1", {
+      class: "tc",
+      children: "TodoApp"
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 50,
+      columnNumber: 7
+    }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__["FormControl"], {
+      children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("input", {
+        type: "text",
+        class: "input-reset ba b--black-20 pa2 mb2 db w-100",
+        value: input,
+        onChange: event => setInput(event.target.value)
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 54,
+        columnNumber: 9
+      }, this)
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 52,
+      columnNumber: 7
+    }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+      type: "text",
+      class: "f6 grow no-underline br-pill ph3 pv2 mb2 dib white bg-black",
+      disabled: !input,
+      variant: "contained",
+      color: "primary",
+      onClick: addTodoFunction,
+      children: "Done"
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 57,
+      columnNumber: 7
+    }, this), todos.map(todo => /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_Todo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      todo: todo
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 27
+    }, this))]
+  }, void 0, true, {
+    fileName: _jsxFileName,
+    lineNumber: 49,
+    columnNumber: 5
+  }, this);
+}
+
+_s(App, "SDobY1vKIpQLgk4wriOc+3n27bo=");
+
+_c = App;
+/* harmony default export */ __webpack_exports__["default"] = (App);
+
+var _c;
+
+__webpack_require__.$Refresh$.register(_c, "App");
+
+const currentExports = __react_refresh_utils__.getModuleExports(module.i);
+__react_refresh_utils__.registerExportsForReactRefresh(currentExports, module.i);
+
+if (true) {
+  const isHotUpdate = !!module.hot.data;
+  const prevExports = isHotUpdate ? module.hot.data.prevExports : null;
+
+  if (__react_refresh_utils__.isReactRefreshBoundary(currentExports)) {
+    module.hot.dispose(
+      /**
+       * A callback to performs a full refresh if React has unrecoverable errors,
+       * and also caches the to-be-disposed module.
+       * @param {*} data A hot module data object from Webpack HMR.
+       * @returns {void}
+       */
+      function hotDisposeCallback(data) {
+        // We have to mutate the data object to get data registered and cached
+        data.prevExports = currentExports;
+      }
+    );
+    module.hot.accept(
+      /**
+       * An error handler to allow self-recovering behaviours.
+       * @param {Error} error An error occurred during evaluation of a module.
+       * @returns {void}
+       */
+      function hotErrorHandler(error) {
+        if (
+          typeof __react_refresh_error_overlay__ !== 'undefined' &&
+          __react_refresh_error_overlay__
+        ) {
+          __react_refresh_error_overlay__.handleRuntimeError(error);
+        }
+
+        if (typeof __react_refresh_test__ !== 'undefined' && __react_refresh_test__) {
+          if (window.onHotAcceptError) {
+            window.onHotAcceptError(error.message);
+          }
+        }
+
+        __webpack_require__.c[module.i].hot.accept(hotErrorHandler);
+      }
+    );
+
+    if (isHotUpdate) {
+      if (
+        __react_refresh_utils__.isReactRefreshBoundary(prevExports) &&
+        __react_refresh_utils__.shouldInvalidateReactRefreshBoundary(prevExports, currentExports)
+      ) {
+        module.hot.invalidate();
+      } else {
+        __react_refresh_utils__.enqueueUpdate(
+          /**
+           * A function to dismiss the error overlay after performing React refresh.
+           * @returns {void}
+           */
+          function updateCallback() {
+            if (
+              typeof __react_refresh_error_overlay__ !== 'undefined' &&
+              __react_refresh_error_overlay__
+            ) {
+              __react_refresh_error_overlay__.clearRuntimeErrors();
+            }
+          }
+        );
+      }
+    }
+  } else {
+    if (isHotUpdate && __react_refresh_utils__.isReactRefreshBoundary(prevExports)) {
+      module.hot.invalidate();
+    }
+  }
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js"), __webpack_require__(/*! ./node_modules/react-dev-utils/refreshOverlayInterop.js */ "./node_modules/react-dev-utils/refreshOverlayInterop.js")))
+
+/***/ })
+
+})
+//# sourceMappingURL=main.733e16286e725f250008.hot-update.js.map
